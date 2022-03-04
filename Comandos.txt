@@ -1,0 +1,8 @@
+
+#Creación del proyecto
+ionic start appcinepolis blank --type=angular --capacitor
+
+#Añadición de páginas
+ionic g service services/data
+
+ng add @angular/fire
