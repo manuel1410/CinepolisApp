@@ -1,0 +1,7 @@
+{
+  "name": "appcinepolis",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
