@@ -1,6 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { NavController } from '@ionic/angular';
 import { DataService } from '../services/data.service';
+import { AlertController } from '@ionic/angular';
+import { RegisterPage } from '../register/register.page';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +15,7 @@ export class HomePage {
   inputPassword: any;
   usuario: any;
 
-  constructor(private dataService: DataService, public navCtrl: NavController) {
+  constructor(private dataService: DataService, public navCtrl: NavController, public alertCtrl: AlertController, private router: Router) {
 
   }
 
@@ -23,12 +26,14 @@ export class HomePage {
     this.login_aux(usuarios).then(res => {
       if(this.usuario){
         console.log("Inicio de sesión exitoso.");
+        this.router.navigateByUrl('/mainmenu', {replaceUrl: true});
         return this.usuario;
       }
       else {
         console.log("Incio de sesión fallido. Por favor verifique los datos ingresados.");
       }
     }).catch(err => {console.log("Error")});
+
   }
 
   async login_aux(usuarios){
@@ -43,13 +48,11 @@ export class HomePage {
   }
 
   register(){
-
-
+    this.router.navigateByUrl('/register', { replaceUrl: true});
   }
 
   adminLogin(){
-
-
+    this.router.navigateByUrl('/admin-login', { replaceUrl: true});
   }
 
 }

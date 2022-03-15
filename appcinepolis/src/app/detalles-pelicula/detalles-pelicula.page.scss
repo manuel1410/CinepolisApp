@@ -1,0 +1,72 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+}
+
+.texto {
+    font-size: 20px;
+    color: white;
+}
+
+/*HEADER*/
+.botonRegresar {
+    visibility: hidden;
+}
+
+#flechaRegreso {
+    position: fixed;
+    font-size: 30px;
+    top: 10px;
+    left: 20px;
+    color: white;
+    visibility: visible;
+}
+
+.toolbarHeader {
+    text-align: center;
+    --background: #18599c;
+    color: white;
+}
+
+#tituloPagina {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/*CONTENT*/
+
+.fondo {
+    width: 100%;
+    height: 100%;
+    background-color: #18599c;
+    --offset-bottom: auto!important;
+    --overflow: hidden;
+    overflow: auto;
+    &::-webkit-scrollbar {
+    display: none;
+    }
+}
+
+.tarjeta-pelicula {
+    height: 95%;
+    --background: #0e3155;
+}
+
+.imagen-pelicula {
+    --background: #0e3155;
+}
+
+#imagen-pelicula {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+h3 {
+    color: #FFCD34;
+}

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collectionData, doc, docData, docSnapshots } from '@angular/fire/firestore';
 import { Observable } from '@firebase/util';
-import { collection, DocumentReference, getDoc } from 'firebase/firestore';
+import { addDoc, collection, DocumentReference, getDoc } from 'firebase/firestore';
+
 
 export interface Usuario {
   id?: string;
@@ -17,12 +18,30 @@ export interface Usuario {
   deleted: boolean;
 }
 
+export interface Pelicula {
+  id?: string;
+  actores: Array<string>;
+  deleted: boolean;
+  director: string;
+  duracion: string;
+  edad_min: number;
+  generos: Array<string>;
+  idiomas: Array<string>;
+  precio_adultomayor: string;
+  precio_nino: string;
+  precio_normal: string;
+  titulo: string;
+  url: string;
+}
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
+
+  usuarioLocal: any;
+  peliculaLocal: any;
 
   constructor(private firestore: Firestore) { }
 
@@ -32,20 +51,37 @@ export class DataService {
   }
 
   getUsuario(correo: any, password: any): Observable<Usuario> {
-
     const usuarioRef = doc(this.firestore, `usuarios/${correo}`);
     return docData(usuarioRef, { idField: 'id' }) as unknown as Observable<Usuario>;  
+  }
 
-    // const usuario = usuarios.subscribe(res => {
-    //   for(let item in res){
-    //     if(res[item].correo == correo && res[item].contrasena == password){
-    //       console.log(res[item]);
-    //       return res[item];
-    //     }
-    //   }
-    // });
+  addUsuario(usuario: Usuario) {
+    console.log(usuario);
+    const usuariosRef = collection(this.firestore, 'usuarios');
+    return addDoc(usuariosRef, usuario);
+  }
 
-    // console.log(usuario);
+  setUsuarioLocal(usuario: Usuario) {
+    this.usuarioLocal = usuario;
+    console.log(this.usuarioLocal);
+  }
+
+  getUsuarioLocal() {
+    return this.usuarioLocal;
+  }
+
+  getPeliculas(): Observable<Pelicula[]>{
+    const peliculasRef = collection(this.firestore, 'peliculas');
+    return collectionData(peliculasRef, { idField: 'id'}) as unknown as Observable<Pelicula[]>;
+  }
+
+  setPeliculaLocal(pelicula: Pelicula) {
+    this.peliculaLocal = pelicula;
+    console.log(this.peliculaLocal);
+  }
+
+  getPeliculaLocal() {
+    return this.peliculaLocal;
   }
 
 

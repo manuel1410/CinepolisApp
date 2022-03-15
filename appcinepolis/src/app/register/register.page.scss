@@ -1,0 +1,106 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+}
+
+.fondo {
+    width: 100%;
+    height: 100%;
+    background-color: #18599c;
+}
+
+.toolbar {
+    width: 100%;
+    height: 100%;
+    background: #18599c;
+}
+
+#flecha-regresar {
+    width: 35px;
+    height: 35px;
+    position: relative;
+    left: 10px;
+    top:25px;
+    padding: 2px;
+    color: white;
+}
+
+.header ion-title {
+    margin: auto;
+    text-align: center;
+    font-size: 32px;
+    padding: 10px;
+    position: relative;
+    top: 20px;
+    color: white;
+}
+
+.form-register input {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 40px;
+    text-align: center;
+}
+
+input {
+    width: 260px;
+    height: 50px;
+}
+
+.button-volver {
+    margin: auto;
+    background-color: #FFCD34;
+    border-radius: 15px;
+    width: 100px;
+    position: relative;
+    top: 390px;
+    left: 40px;
+    padding: 2px;
+}
+
+.button-volver a{
+    text-decoration: none;
+    color: white;
+}
+
+.button-volver p {
+    font-size: 20px;
+}
+
+.button-registrar {
+    margin: auto;
+    background-color: #FFCD34;
+    border-radius: 15px;
+    width: 100px;
+    position: relative;
+    top: 327px;
+    left: 180px;
+    padding: 2px;
+}
+
+.button-registrar a{
+    text-decoration: none;
+    color: white;
+}
+
+.button-registrar p {
+    font-size: 19px;
+}
+
+.input-field {
+    margin: 5px;
+    border-radius: 16px;
+}
+
+.botones {
+    width: 0;
+    height: 0;
+    position: relative;
+    top: -270px;
+}
+
+.botones p {
+    color: black;
+}

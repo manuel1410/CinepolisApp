@@ -1,0 +1,27 @@
+<ion-header>
+  <ion-toolbar class="toolbarHeader">
+    <button class="botonRegresar" (click)="regresar()">
+      <ion-icon name="chevron-back-outline" id="flechaRegreso"></ion-icon>
+    </button>
+    <ion-title id="tituloPagina">Menú Principal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="fondo">
+
+    <ion-card *ngFor="let item of peliculas" class="cartas-peliculas">
+      <ion-item class="tarjeta-pelicula">
+        <img [src]="item.url" id="imagen-pelicula">
+      </ion-item>
+      <ion-item class="item-pelicula">
+        <button class="botones-pelicula" (click)="detallesPelicula(item)">
+          Información
+        </button>
+      </ion-item>
+    </ion-card>
+
+  </div>
+
+</ion-content>

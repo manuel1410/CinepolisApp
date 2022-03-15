@@ -1,18 +1,13 @@
-<!-- <ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
-  </ion-toolbar>
-</ion-header> -->
-
 <ion-content [fullscreen]="true">
   <div class="fondo">
     <div class="imagen-Login">
       <img src="../../assets/home-img/Cinepolis-Logo.jpg" alt="Cinepolis-Logo">
     </div>
     <div class="login">
-      <strong id="login-text">Iniciar Sesión</strong>
+      <div class="login-text">
+        <strong class="bloque">Iniciar Sesión</strong>
+        <strong class="bloque">Administrador</strong>
+      </div>
 
       <div class="login-buttons">
         <input id="input-email" type="email" class="input-field" [(ngModel)]="inputEmail" name="input-email" placeholder="Correo electrónico">
@@ -21,9 +16,7 @@
       </div>
 
     <div class="enlaces-login">
-      <a href="../register" (click)="register()">Registrarse</a>
-      <p></p>
-      <a href="../admin-login" (click)="adminLogin()">¿Desea ingresar como administrador?</a>
+      <a href="../home" (click)="adminUser()">¿Desea ingresar como usuario?</a>
     </div>
 
     </div>
