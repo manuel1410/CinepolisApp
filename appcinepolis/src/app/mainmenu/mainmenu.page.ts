@@ -34,4 +34,12 @@ export class MainmenuPage implements OnInit {
     this.router.navigateByUrl('/detalles-pelicula', { replaceUrl: true});
   }
 
+  alimentos(){
+    this.router.navigateByUrl('/alimentos-menu', { replaceUrl: true});
+  }
+
+  carrito() {
+
+  }
+
 }

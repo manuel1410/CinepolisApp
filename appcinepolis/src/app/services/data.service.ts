@@ -34,6 +34,15 @@ export interface Pelicula {
   url: string;
 }
 
+export interface Comida {
+  cantidad: number;
+  deleted: boolean;
+  nombre: string;
+  precio: number;
+  tipo: string;
+  url: string;
+}
+
 
 @Injectable({
   providedIn: 'root'
@@ -42,6 +51,7 @@ export class DataService {
 
   usuarioLocal: any;
   peliculaLocal: any;
+  comidaLocal: any;
 
   constructor(private firestore: Firestore) { }
 
@@ -82,6 +92,20 @@ export class DataService {
 
   getPeliculaLocal() {
     return this.peliculaLocal;
+  }
+
+  getComidas(): Observable<Comida[]>{
+    const comidasRef = collection(this.firestore, 'comidas');
+    return collectionData(comidasRef, { idField: 'id'}) as unknown as Observable<Comida[]>;
+  }
+  
+  setComidaLocal(comida: Comida) {
+    this.comidaLocal = comida;
+    console.log(this.comidaLocal);
+  }
+
+  getComidaLocal() {
+    return this.comidaLocal;
   }
 
 

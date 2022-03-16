@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar class="toolbarHeader">
+    <button class="botonRegresar" (click)="regresar()">
+      <ion-icon name="chevron-back-outline" id="flechaRegreso"></ion-icon>
+    </button>
+    <ion-title id="tituloPagina">Alimentos</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="fondo">
+
+    <ion-row class="botones-bar">
+      <button class="botones-row" (click)="carrito()"> <ion-icon name="cart-outline" id="carrito-img"></ion-icon> Carrito</button>
+    </ion-row>
+
+
+  <ion-card *ngFor="let item of comidas" class="cartas-comidas">
+    <ion-item class="tarjeta-comida">
+      <img [src]="item.url" id="imagen-comida">
+    </ion-item>
+    <div class="nombre-comida">
+      <h4>{{item.nombre}}</h4>
+    </div>
+    <ion-item class="item-comida">
+      <button class="botones-comida" (click)="detallesComida(item)">
+        Información
+      </button>
+    </ion-item>
+  </ion-card>
+  </div>
+  
+</ion-content>

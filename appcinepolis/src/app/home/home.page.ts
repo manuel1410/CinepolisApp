@@ -21,8 +21,8 @@ export class HomePage {
 
 
   login() {
-
     const usuarios = this.dataService.getUsuarios();
+
     this.login_aux(usuarios).then(res => {
       if(this.usuario){
         console.log("Inicio de sesión exitoso.");
@@ -46,7 +46,7 @@ export class HomePage {
       }
     });
   }
-
+  
   register(){
     this.router.navigateByUrl('/register', { replaceUrl: true});
   }

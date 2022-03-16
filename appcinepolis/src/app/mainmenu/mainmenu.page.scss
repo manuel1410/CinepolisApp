@@ -45,7 +45,29 @@
     &::-webkit-scrollbar {
     display: none;
     }
-  }
+}
+
+
+.botones-row {
+    position: relative;
+    top: 4px;
+    margin: 5px;
+    background-color: #FFCD34;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 2px;
+}
+
+#carrito-img {
+    position: relative;
+    top: 4px;
+}
+
+#alimento-img {
+    position: relative;
+    top: 4px;
+}
 
 .cartas-peliculas {
     position: relative;

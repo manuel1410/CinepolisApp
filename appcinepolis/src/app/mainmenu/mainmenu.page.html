@@ -11,6 +11,13 @@
 
   <div class="fondo">
 
+    <ion-row class="botones-bar">
+
+      <button class="botones-row" (click)="alimentos()"> <ion-icon name="fast-food-outline" id="alimentos-img"></ion-icon> Alimentos</button>
+      <button class="botones-row" (click)="carrito()"> <ion-icon name="cart-outline" id="carrito-img"></ion-icon> Carrito</button>
+
+    </ion-row>
+
     <ion-card *ngFor="let item of peliculas" class="cartas-peliculas">
       <ion-item class="tarjeta-pelicula">
         <img [src]="item.url" id="imagen-pelicula">
@@ -21,6 +28,7 @@
         </button>
       </ion-item>
     </ion-card>
+
 
   </div>
 

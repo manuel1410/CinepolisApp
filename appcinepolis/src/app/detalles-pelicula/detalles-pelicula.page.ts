@@ -23,4 +23,8 @@ export class DetallesPeliculaPage implements OnInit {
   regresar() {
     this.router.navigateByUrl('/mainmenu', { replaceUrl: true});
   }
+
+  comprarEntradas() {
+    
+  }
 }
