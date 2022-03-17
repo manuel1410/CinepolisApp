@@ -43,7 +43,7 @@ export class AlimentosMenuPage implements OnInit {
   }
 
   carrito() {
-    
+    this.router.navigateByUrl('/carrito', { replaceUrl: true});
   }
 
   filtrar() {

@@ -188,6 +188,7 @@ export class DataService {
   }
 
   setSala01Carrito(json: any){
+    console.log(json);
     this.carritoLocal.sala01.push(json);
   }
 

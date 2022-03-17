@@ -39,7 +39,7 @@ export class MainmenuPage implements OnInit {
   }
 
   carrito() {
-
+    this.router.navigateByUrl('/carrito', { replaceUrl: true});
   }
 
 }
