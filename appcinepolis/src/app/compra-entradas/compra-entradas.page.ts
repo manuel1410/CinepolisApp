@@ -78,6 +78,7 @@ export class CompraEntradasPage implements OnInit {
     const precioAdultosTotal = cantidadAdultos*this.pelicula.precio_normal;
     const precioAdultosMayoresTotal = cantidadAdultosMayores*this.pelicula.precio_adultomayor;
     const precioTotal = precioNinosTotal+precioAdultosTotal+precioAdultosMayoresTotal;
+    const url = this.pelicula.url;
 
     var stringAsientos = "";
     for(let asiento of indicesArray){
@@ -100,7 +101,8 @@ export class CompraEntradasPage implements OnInit {
       precioAdultosTotal: precioAdultosTotal,
       precioAdultosMayoresTotal: precioAdultosMayoresTotal,
       precioTotal: precioTotal,
-      numAsientos: numAsientos
+      numAsientos: numAsientos,
+      url: url
 
     }
 
@@ -155,7 +157,6 @@ export class CompraEntradasPage implements OnInit {
       })
       await alert.present();
     }
-    console.log(this.dataService.getCarritoLocal());
     this.actualizarCampos();
     this.router.navigateByUrl('/mainmenu', { replaceUrl: true});
   }
@@ -198,7 +199,6 @@ export class CompraEntradasPage implements OnInit {
     let i = 0;
     var matrizAsientos = [];
     const usuario = this.dataService.getUsuarioLocal();
-    console.log(usuario);
     for(let asiento of this.colorsArray){
       if(asiento == 'success'){
         var jsonAsiento = {id: i, num_asiento: i+1, reservado: true, persona: ""};
@@ -215,16 +215,8 @@ export class CompraEntradasPage implements OnInit {
       i++;
     }
 
-    // console.log(this.sala.nombre);
-    // console.log(this.sala.pelicula);
-    // console.log(this.sala.hora);
-    // console.log(this.sala.deleted);
-    // console.log(this.sala.cantidad_asientos);
-    // console.log(matrizAsientos);
-
     this.dataService.updateReservas({id: this.sala.id, nombre: this.sala.nombre, pelicula: this.sala.pelicula, hora: this.sala.hora, deleted: this.sala.deleted, cantidad_asientos: this.sala.cantidad_asientos, asientos: matrizAsientos});
 
-    //var asiento = {id: i, num_asiento: i+1, reservado: false, persona: ""}
   }
 
   cambiarColor(index) {

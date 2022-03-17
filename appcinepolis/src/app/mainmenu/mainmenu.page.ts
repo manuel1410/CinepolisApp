@@ -19,7 +19,6 @@ export class MainmenuPage implements OnInit {
     peliculasRef.subscribe(res => {
       this.peliculas = res;
     })
-    this.dataService.createcarritoLocal();
   }
 
   ngOnInit() {

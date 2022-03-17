@@ -56,9 +56,9 @@ export interface Sala {
 
 export interface Carrito {
   id?: string;
-  sala01: any;
-  sala02: any;
-  sala03: any;
+  sala01: Array<any>;
+  sala02: Array<any>;
+  sala03: Array<any>;
   comidas: Array<any>;
 }
 
@@ -126,7 +126,6 @@ export class DataService {
   
   setComidaLocal(comida: Comida) {
     this.comidaLocal = comida;
-    console.log(this.comidaLocal);
   }
 
   getComidaLocal() {
@@ -181,37 +180,42 @@ export class DataService {
 
   createcarritoLocal(){
     this.carritoLocal = {
-      sala01: {},
-      sala02: {},
-      sala03: {},
+      sala01: [],
+      sala02: [],
+      sala03: [],
       comidas: []
     }
   }
 
   setSala01Carrito(json: any){
-    this.carritoLocal.sala01 = json;
+    this.carritoLocal.sala01.push(json);
   }
 
   setSala02Carrito(json: any){
-    this.carritoLocal.sala02 = json;
+    this.carritoLocal.sala02.push(json);
   }
 
   setSala03Carrito(json: any){
-    this.carritoLocal.sala03 = json;
+    this.carritoLocal.sala03.push(json);
   }
 
-  setComidasCarrito(){
-
+  setComidasCarrito(json: any){
+    this.carritoLocal.comidas.push(json);
+    console.log(this.carritoLocal);
   }
 
   getCarritoLocal(){
     return this.carritoLocal;
   }
 
-  updateReservas(sala: Sala){
-    console.log(sala);    
+  updateReservas(sala: Sala){  
     const salaDocRef = doc(this.firestore, `salas/${sala.id}`);
-    return updateDoc(salaDocRef, {nombre: sala.nombre, pelicula: sala.pelicula, hora: sala.hora, deleted: sala.deleted, cantidad_asientos: sala.cantidad_asientos, asientos: sala.asientos});
+    return updateDoc(salaDocRef, {asientos: sala.asientos});
+  }
+
+  updateStock(comida: Comida){
+    const comidaDocRef = doc(this.firestore, `comidas/${comida.id}`);
+    return updateDoc(comidaDocRef, {cantidad: comida.cantidad})
   }
 
 
