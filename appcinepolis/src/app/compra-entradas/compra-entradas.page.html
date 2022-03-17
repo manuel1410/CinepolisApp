@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar class="toolbarHeader">
+    <button class="botonRegresar" (click)="regresar()">
+      <ion-icon name="chevron-back-outline" id="flechaRegreso"></ion-icon>
+    </button>
+    <ion-title id="tituloPagina">Reservación</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+
+  <div class="fondo">
+
+    <ion-card *ngIf="pelicula" class="tarjeta-pelicula">
+      <ion-item class="imagen-pelicula">
+        <img [src]="pelicula.url" id="imagen-pelicula">
+      </ion-item>
+      <hr>
+      <div class="seccion-info">
+        <div class="info-pelicula">
+          <h3>Título: <span class="texto">{{pelicula.titulo}}</span> </h3>
+          <h3>Sala: <span class="texto">{{pelicula.Sala}}</span></h3>
+          <h3>Hora: <span class="texto">{{pelicula.Hora}}</span></h3>
+          <h3>Edad mínima: <span class="texto">{{pelicula.edad_min}} años</span></h3>
+          <div *ngIf="sala">
+            <h3>Cantidad de asientos disponibles: <span class="texto">{{sala.cantidad_asientos}}</span></h3>
+            <h3>Cantidad niños: <input id="input-cantidad-ninos" type="number" class="input-field" [(ngModel)]="cantidadNinos" name="input-cantidad-ninos" placeholder="" min="0" max={{sala.cantidad_asientos}}> </h3>
+            <h3>Cantidad Adultos: <input id="input-cantidad-adultos" type="number" class="input-field" [(ngModel)]="cantidadAdultos" name="input-cantidad-adultos" placeholder="" min="0" max={{sala.cantidad_asientos}}> </h3>
+            <h3>Cantidad Adultos Mayores: <input id="input-cantidad-adultos-mayores" type="number" class="input-field" [(ngModel)]="cantidadAdultosMayores" name="input-cantidad-adultos-mayores" placeholder="" min="0" max={{sala.cantidad_asientos}}> </h3>
+            
+            <div class="pantalla">
+              <div class="pantalla-box">
+                <p>Pantalla</p>
+              </div>
+            </div>
+
+            <div>
+              <div *ngFor="let asiento of sala.asientos; let i = index" class="taquilla-asientos">
+
+                <div class="disponible" *ngIf="!asiento.reservado">
+                  <ion-button class="asiento" id="asiento-reservable" ion-button [color]="colorsArray[i]" (click)="cambiarColor(i)"> <span class="texto-asientos">{{asiento.num_asiento}}</span></ion-button>
+                  <!-- <ion-button class="asiento" id="asiento-reservable" (click)="cambiarColor(i)" [background]="colorsArray[i]"> <span class="texto-asientos">{{asiento.num_asiento}}</span></ion-button> -->
+                  <!-- <button class="asiento" > <span class="texto-asientos">{{asiento.num_asiento}}</span></button> -->
+                </div>
+
+                <div class="reservado" *ngIf="asiento.reservado">
+                  <ion-button class="asiento"> <span class="texto-asientos">{{asiento.num_asiento}}</span></ion-button>
+                  <!-- <button class="asiento" disabled> <span class="texto-asientos" >{{asiento.num_asiento}}</span></button> -->
+                </div>
+
+              </div>
+            </div>
+
+            <div class="leyenda">
+              <div class="caja-gris"></div> <p>Disponible</p>
+              <div class="caja-roja"></div> <p>Reservado</p>
+              <div class="caja-verde"></div> <p>Seleccionado</p>
+            </div>
+
+            <div class="asientos-seleccionados">
+              <!-- <h3>Asientos Seleccionados: <span class="texto"></span></h3> -->
+            </div>
+
+          </div>
+          
+
+        </div>
+        <div class="botones-compra">
+          <button class="boton-compra" (click)="validarEntradas()">
+            <p>Añadir al carrito</p>
+          </button>
+        </div>
+
+        <div class="prueba">
+          <ion-button id="prueba-boton">
+            Prueba
+          </ion-button>
+        </div>
+
+
+    </div>
+    </ion-card>
+
+  </div>
+
+</ion-content>

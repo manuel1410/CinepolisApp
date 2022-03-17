@@ -25,6 +25,6 @@ export class DetallesPeliculaPage implements OnInit {
   }
 
   comprarEntradas() {
-    
+    this.router.navigateByUrl('/compra-entradas', { replaceUrl: true});
   }
 }

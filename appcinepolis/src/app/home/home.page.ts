@@ -25,6 +25,7 @@ export class HomePage {
 
     this.login_aux(usuarios).then(res => {
       if(this.usuario){
+        this.dataService.setUsuarioLocal(this.usuario);
         console.log("Inicio de sesión exitoso.");
         this.router.navigateByUrl('/mainmenu', {replaceUrl: true});
         return this.usuario;

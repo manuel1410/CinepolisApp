@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+}
+
+.texto {
+    font-size: 20px;
+    color: white;
+}
+
+/*HEADER*/
+.botonRegresar {
+    visibility: hidden;
+}
+
+#flechaRegreso {
+    position: fixed;
+    font-size: 30px;
+    top: 10px;
+    left: 20px;
+    color: white;
+    visibility: visible;
+}
+
+.toolbarHeader {
+    text-align: center;
+    --background: #18599c;
+    color: white;
+}
+
+#tituloPagina {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+/*CONTENT*/
+
+.fondo {
+    width: 100%;
+    height: 100%;
+    background-color: #18599c;
+    --offset-bottom: auto!important;
+    --overflow: hidden;
+    overflow: auto;
+    &::-webkit-scrollbar {
+    display: none;
+    }
+}
+
+
+.tarjeta-pelicula {
+    height: 95%;
+    --background: #0e3155;
+    --offset-bottom: auto!important;
+    --overflow: hidden;
+    overflow: auto;
+    &::-webkit-scrollbar {
+    display: none;
+    }
+}
+
+.imagen-pelicula {
+    --background: #0e3155;
+}
+
+#imagen-pelicula {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+h3 {
+    color: #FFCD34;
+}
+
+.boton-compra {
+    top: 10px;
+    margin: auto;
+    background-color: #FFCD34;
+    border-radius: 15px;
+    width: 200px;
+    height: 50px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 2px;
+}
+
+.boton-compra p {
+    position: relative;
+    top: -10px;
+    text-align: center;
+}
+
+.input-field {
+    margin-top: 10px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: black;
+    width: 150px;
+}
+
+.pantalla {
+    margin-top: 30px;
+    margin-bottom: 15px;
+}
+
+.pantalla-box {
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    background: white;
+    color: black;
+    width: 280px;
+    height: 50px;
+    text-align: center;
+    border: 4px solid #FFCD34;
+}
+
+.pantalla-box p {
+    position: relative;
+    top: -15px;
+}
+
+.taquilla-asientos {
+    position: relative;
+    left: -1px;
+    color: white;
+    display: inline-block;
+    padding: -2px;
+}
+
+.disponible {
+    position: relative;
+    text-align: center;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 0px;
+    
+}
+.disponible ion-button {
+    width: 20px;
+    height: 40px;
+    --background: grey; 
+}
+
+.reservado {
+    position: relative;
+    text-align: center;
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 0px;
+}
+
+.reservado ion-button {
+    width: 20px;
+    height: 40px;
+    --background: rgb(146, 19, 19);
+    --disabled: true;
+}
+
+.texto-asientos {
+    margin: 0px;
+    padding: 0px;
+    color: white;
+    font-size: 16px;
+}
+
+.leyenda{
+    margin-top: 20px;
+    display:inline-flex;
+}
+
+.leyenda p {
+    font-size: 14px;
+    position: relative;
+    top: -10px;
+}
+
+.caja-gris {
+    position: relative;
+    margin: 5px;
+    width: 15px;
+    height: 15px;
+    background-color: grey;
+}
+
+.caja-roja {
+    position: relative;
+    margin: 5px;
+    width: 15px;
+    height: 15px;
+    background-color: #921313;
+}
+
+.caja-verde {
+    position: relative;
+    margin: 5px;
+    width: 15px;
+    height: 15px;
+    background-color: #027502;
+}
+
+.asientos-seleccionados {
+    margin: 0px;
+}
+
+.asientos-seleccionados h3{
+    margin: 0px;
+}
+
+.prueba ion-button {
+    margin-top: 20px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 50px;
+    --background: #808080;
+}
+
+#prueba-boton {
+    --background-activated: #027502;
+}
+
+#asiento-reservable{
+    --background-activated: #027502;
+}

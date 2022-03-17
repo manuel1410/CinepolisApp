@@ -47,8 +47,6 @@
 
 .botones-row {
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
     top: 4px;
     margin: 5px;
     background-color: #FFCD34;
@@ -59,6 +57,11 @@
 }
 
 #carrito-img {
+    position: relative;
+    top: 4px;
+}
+
+#filtro-img {
     position: relative;
     top: 4px;
 }
@@ -109,4 +112,42 @@
     padding: 8px;
     color: white;
     text-align: center;
+}
+
+
+/*FILTROS*/
+
+#boton-invisible {
+    display: none;
+}
+
+.switches-filtraje {
+    margin: 10px;
+    padding: 0px;
+}
+
+
+.switches-filtraje ion-label {
+    color: white;
+}
+
+
+.switches-filtraje ion-list {
+    margin: 0px;
+    padding: 0px;
+}
+
+.switches-filtraje ion-item{
+    margin: 0px;
+    --background: #18599c;
+}
+
+.switches-filtros{
+    width: 40px;
+    height: 20px;
+
+    --background: grey ;
+    --background-checked: #0e3155;
+
+    color: white;
 }

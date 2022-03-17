@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Firestore, collectionData, doc, docData, docSnapshots } from '@angular/fire/firestore';
 import { Observable } from '@firebase/util';
-import { addDoc, collection, DocumentReference, getDoc } from 'firebase/firestore';
+import { addDoc, collection, DocumentReference, getDoc, updateDoc } from 'firebase/firestore';
 
 
 export interface Usuario {
@@ -35,12 +35,31 @@ export interface Pelicula {
 }
 
 export interface Comida {
+  id?: string;
   cantidad: number;
   deleted: boolean;
   nombre: string;
   precio: number;
   tipo: string;
   url: string;
+}
+
+export interface Sala {
+  id?: string;
+  cantidad_asientos: any;
+  deleted: boolean;
+  hora: string;
+  nombre: string;
+  pelicula: string;
+  asientos: Array<any>;
+}
+
+export interface Carrito {
+  id?: string;
+  sala01: any;
+  sala02: any;
+  sala03: any;
+  comidas: Array<any>;
 }
 
 
@@ -51,7 +70,11 @@ export class DataService {
 
   usuarioLocal: any;
   peliculaLocal: any;
+  comidasGeneral: any;
   comidaLocal: any;
+  comidaFiltrada: Array<any> = [];
+  salaLocal: any;
+  carritoLocal: any;
 
   constructor(private firestore: Firestore) { }
 
@@ -73,7 +96,6 @@ export class DataService {
 
   setUsuarioLocal(usuario: Usuario) {
     this.usuarioLocal = usuario;
-    console.log(this.usuarioLocal);
   }
 
   getUsuarioLocal() {
@@ -87,7 +109,6 @@ export class DataService {
 
   setPeliculaLocal(pelicula: Pelicula) {
     this.peliculaLocal = pelicula;
-    console.log(this.peliculaLocal);
   }
 
   getPeliculaLocal() {
@@ -97,6 +118,10 @@ export class DataService {
   getComidas(): Observable<Comida[]>{
     const comidasRef = collection(this.firestore, 'comidas');
     return collectionData(comidasRef, { idField: 'id'}) as unknown as Observable<Comida[]>;
+  }
+
+  setComidaGeneral(comidas: any) {
+    this.comidasGeneral = comidas;
   }
   
   setComidaLocal(comida: Comida) {
@@ -108,8 +133,104 @@ export class DataService {
     return this.comidaLocal;
   }
 
+  setComidaFiltrada(comida: Comida, comidasFlag: boolean, bebidasFlag: boolean, combosFlag: boolean) {
+
+    this.comidaFiltrada = [];
+
+    if(comidasFlag==true){
+      for(let item of this.comidasGeneral){
+        if(item.tipo == "comida"){
+          this.comidaFiltrada.push(item);
+        }
+      }
+    }
+
+    if(bebidasFlag==true){
+      for(let item of this.comidasGeneral){
+        if(item.tipo == "bebida"){
+          this.comidaFiltrada.push(item);
+        }
+      }
+    }
+
+    if(combosFlag==true){
+      for(let item of this.comidasGeneral){
+        if(item.tipo == "combo"){
+          this.comidaFiltrada.push(item);
+        }
+      }
+    }
+  }
+
+  getComidaFiltrada() {
+    return this.comidaFiltrada;
+  }
+
+  getSalas(): Observable<Sala[]>{
+    const salasRef = collection(this.firestore, 'salas');
+    return collectionData(salasRef, { idField: 'id'}) as unknown as Observable<Sala[]>;
+  }
+
+  setSalaLocal(sala: Sala) {
+    this.salaLocal = sala;
+  }
+
+  getSalaLocal() {
+    return this.salaLocal;
+  }
+
+  createcarritoLocal(){
+    this.carritoLocal = {
+      sala01: {},
+      sala02: {},
+      sala03: {},
+      comidas: []
+    }
+  }
+
+  setSala01Carrito(json: any){
+    this.carritoLocal.sala01 = json;
+  }
+
+  setSala02Carrito(json: any){
+    this.carritoLocal.sala02 = json;
+  }
+
+  setSala03Carrito(json: any){
+    this.carritoLocal.sala03 = json;
+  }
+
+  setComidasCarrito(){
+
+  }
+
+  getCarritoLocal(){
+    return this.carritoLocal;
+  }
+
+  updateReservas(sala: Sala){
+    console.log(sala);    
+    const salaDocRef = doc(this.firestore, `salas/${sala.id}`);
+    return updateDoc(salaDocRef, {nombre: sala.nombre, pelicula: sala.pelicula, hora: sala.hora, deleted: sala.deleted, cantidad_asientos: sala.cantidad_asientos, asientos: sala.asientos});
+  }
 
 
+  /*
+  createMatrizAsientos(sala: Sala){
+
+    var matrizAsientos = [];
+
+    for(let i=0; i < 100; i++){
+      var asiento = {id: i, num_asiento: i+1, reservado: false, persona: ""}
+      matrizAsientos.push(asiento);
+    }
+
+    const salaDocRef = doc(this.firestore, `salas/${sala.id}`);
+    return updateDoc(salaDocRef, {nombre: sala.nombre, pelicula: sala.pelicula, hora: sala.hora, deleted: sala.deleted, cantidad_asientos: sala.cantidad_asientos, asientos: matrizAsientos});
+
+    //const salasRef = collection(this.firestore, 'salas');
+  }
+  */
 }
 
 

@@ -14,11 +14,12 @@ export class MainmenuPage implements OnInit {
   pelicula: any;
 
 
-  constructor(private dataService: DataService, public navCtrl: NavController, public alertCtrl: AlertController, private router: Router) { 
+  constructor(private dataService: DataService, public navCtrl: NavController, public alertCtrl: AlertController, private router: Router) {
     const peliculasRef = this.dataService.getPeliculas();
     peliculasRef.subscribe(res => {
       this.peliculas = res;
     })
+    this.dataService.createcarritoLocal();
   }
 
   ngOnInit() {

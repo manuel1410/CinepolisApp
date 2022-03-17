@@ -35,6 +35,14 @@ const routes: Routes = [
     path: 'alimentos-menu',
     loadChildren: () => import('./alimentos-menu/alimentos-menu.module').then( m => m.AlimentosMenuPageModule)
   },
+  {
+    path: 'detalles-alimentos',
+    loadChildren: () => import('./detalles-alimentos/detalles-alimentos.module').then( m => m.DetallesAlimentosPageModule)
+  },
+  {
+    path: 'compra-entradas',
+    loadChildren: () => import('./compra-entradas/compra-entradas.module').then( m => m.CompraEntradasPageModule)
+  },
 ];
 
 @NgModule({
