@@ -59,12 +59,14 @@ export class CompraEntradasPage implements OnInit {
   async entradasCarrito() {
 
     var i = 0;
+    var j = 1;
     let indicesArray = [];
     for(let asiento of this.colorsArray){
       if(asiento == 'success'){
-        indicesArray.push(i);
+        indicesArray.push(j);
         i++;
       }
+      j++;
     }
 
     const nombrePelicula = this.pelicula.titulo;

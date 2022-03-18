@@ -13,12 +13,13 @@ export class CarritoPage implements OnInit {
   carritoLocal: any;
   carritoArrayPeliculas: Array<any>;
   carritoArrayComidas: Array<any>;
+  itemsFlag: boolean;
 
   constructor(private dataService: DataService, public navCtrl: NavController, public alertCtrl: AlertController, private router: Router) { 
     this.carritoLocal = this.dataService.getCarritoLocal();
     this.carritoArrayPeliculas = [];
     this.carritoArrayComidas = [];
-
+    /*
     this.carritoArrayPeliculas = [{
       nombre: "SAO: Progressive-Aria de noche sin estrellas",
       sala: "Sala 01",
@@ -35,29 +36,48 @@ export class CarritoPage implements OnInit {
       url: "https://previews.dropbox.com/p/thumb/ABfvqeGcnDnDL1hdxCv5z_CFUXNnD4xqJfxo-vQOaWomVKUWUN7mwHNYWOHf9T6nLziPk32zrsETxQlp2Qpd4-0Hq9UYikERPyd94yq8jtaEdDrI8SyXXvsD1sA02nqv0lX14Fqfi0WSTchXO-RfifJOKlz_XCIj_owjhLbEM1tBbB9C25uuuRdhoM9TKV4yyozaNPWHXPqUCeySUVSRGqcfrVPR54-mG1FuvQ5CKjnwvd0mKNoONyg7yPryTNZG5Bov-9ahAh-kixZS7xMD2MVkIS4iOrE9AclTxlfhaOhwrZUwB7yPFgEzGv5Fdk1QlJzU81yz9g_PP21h3OGHC__XHUbJGi7eUtJ9NfsYhVaVtjKoF6Lh40GDAcfPCEGF6-Q/p.jpeg"
   }]
 
-    /*
+  this.carritoArrayComidas = [{
+    nombre: "Papas fritas",
+    cantidad: 2,
+    precioUnitario: 1000,
+    precioTotal: 2000,
+    url: "https://previews.dropbox.com/p/thumb/ABetM3kDGTHTQh_O-LK6criUSkX2KkFLGM7xJ3tzesy_VOIMEQpuq2qI99YWSavzKlxGxWOIUzMW4zzPh22INRJ-SsXzK_WRxFeSwOH2yRgoKsuGMQL_sISnknZp9Wa7JeSNDywAevZX5LBFJOYnPbnjATlolTaDdHHZ3LKfYV_Fy6NurKGGTtQ1tOkgfuln0vpJGmmfLPMMg9nCRpwuRYEL9q9TxHMevTxQkIQKYoaodK9v4AHAeqNNCqET8EtZcaSYI_0h2hBx858jaHKa_uA8T2edIkqFIVRBJg8rHERS3HwMhRDbHUSlDemoBhrC-unfOdxOmJzPBxFodBbUj6Q53FYn8MUR2amrbqzhhfsFLbuj8t3xbUC2GkJrOrODJ88/p.jpeg"
+  }]
+  */
 
-    for(let elemento of this.carritoLocal.sala01){
-      this.carritoArrayPeliculas.push(elemento);
-    }
-    for(let elemento of this.carritoLocal.sala02){
-      this.carritoArrayPeliculas.push(elemento);
-    }
-    for(let elemento of this.carritoLocal.sala03){
-      this.carritoArrayPeliculas.push(elemento);
-    }
-    for(let elemento of this.carritoLocal.comidas){
-      this.carritoArrayComidas.push(elemento);
+    if(this.carritoLocal){
+
+      for(let elemento of this.carritoLocal.sala01){
+        this.carritoArrayPeliculas.push(elemento);
+      }
+      for(let elemento of this.carritoLocal.sala02){
+        this.carritoArrayPeliculas.push(elemento);
+      }
+      for(let elemento of this.carritoLocal.sala03){
+        this.carritoArrayPeliculas.push(elemento);
+      }
+      for(let elemento of this.carritoLocal.comidas){
+        this.carritoArrayComidas.push(elemento);
+      }
     }
 
-    */
+    if(this.carritoArrayPeliculas.length == 0 && this.carritoArrayComidas.length == 0){
+      this.itemsFlag = true;
+    }
+    else{
+      this.itemsFlag = false;
+    }
 
   }
 
   ngOnInit() {
   }
 
-  eliminarItem(index){
+  eliminarPelicula(index){
+
+  }
+
+  eliminarComida(index){
 
   }
 
