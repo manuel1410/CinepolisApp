@@ -51,12 +51,15 @@ export class DetallesAlimentosPage implements OnInit {
 
     } else if((cantidadSeleccionada <= cantidadStock) && (cantidadSeleccionada > 0)){
 
+      const numRD = Math.floor(Math.random()*10000000000);
+
       const jsonComidaCarrito = {
         nombre: nombreComida,
         cantidad: cantidadSeleccionada,
         precioUnitario: precioUnitario,
         precioTotal: precioTotal,
-        url: url
+        url: url,
+        numOrden: numRD
       }
       this.dataService.setComidasCarrito(jsonComidaCarrito);
       let alert = await this.alertCtrl.create({

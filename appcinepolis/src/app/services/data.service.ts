@@ -60,6 +60,7 @@ export interface Carrito {
   sala02: Array<any>;
   sala03: Array<any>;
   comidas: Array<any>;
+  //usuario: any;
 }
 
 
@@ -170,6 +171,11 @@ export class DataService {
     return collectionData(salasRef, { idField: 'id'}) as unknown as Observable<Sala[]>;
   }
 
+  getSala(nombre: any): Observable<Sala> {
+    const salaRef = doc(this.firestore, `salas/${nombre}`);
+    return docData(salaRef, { idField: 'id' }) as unknown as Observable<Sala>;  
+  }
+
   setSalaLocal(sala: Sala) {
     this.salaLocal = sala;
   }
@@ -183,8 +189,17 @@ export class DataService {
       sala01: [],
       sala02: [],
       sala03: [],
-      comidas: []
+      comidas: [],
+      usuario: ""
     }
+  }
+
+  setCarritoLocalUsuario(){
+    this.carritoLocal.usuario = this.usuarioLocal.id;
+  }
+
+  setCarritoLocal(carrito: Carrito) {
+    this.carritoLocal = carrito;
   }
 
   setSala01Carrito(json: any){
@@ -207,6 +222,11 @@ export class DataService {
 
   getCarritoLocal(){
     return this.carritoLocal;
+  }
+
+  addCarrito(carrito: Carrito){
+    const carritosRef = collection(this.firestore, 'carritos');
+    return addDoc(carritosRef, carrito);
   }
 
   updateReservas(sala: Sala){  

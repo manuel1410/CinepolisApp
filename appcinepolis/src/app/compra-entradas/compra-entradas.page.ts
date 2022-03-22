@@ -60,6 +60,7 @@ export class CompraEntradasPage implements OnInit {
 
     var i = 0;
     var j = 1;
+
     let indicesArray = [];
     for(let asiento of this.colorsArray){
       if(asiento == 'success'){
@@ -104,7 +105,9 @@ export class CompraEntradasPage implements OnInit {
       precioAdultosMayoresTotal: precioAdultosMayoresTotal,
       precioTotal: precioTotal,
       numAsientos: numAsientos,
+      numAsientosArray: indicesArray,
       url: url
+
 
     }
 

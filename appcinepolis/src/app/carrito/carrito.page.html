@@ -38,7 +38,7 @@
         </ion-card-content>
       </ion-card>
 
-      <ion-card *ngFor="let item of carritoArrayComidas" class="cartas-comidas">
+      <ion-card *ngFor="let item of carritoArrayComidas; let i = index" class="cartas-comidas">
         <ion-card-content>
           <img [src]="item.url" id="imagen-comida">
           <div class="texto-superior">

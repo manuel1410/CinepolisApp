@@ -15,6 +15,7 @@ export class MainmenuPage implements OnInit {
 
 
   constructor(private dataService: DataService, public navCtrl: NavController, public alertCtrl: AlertController, private router: Router) {
+    this.dataService.setCarritoLocalUsuario();
     const peliculasRef = this.dataService.getPeliculas();
     peliculasRef.subscribe(res => {
       this.peliculas = res;
