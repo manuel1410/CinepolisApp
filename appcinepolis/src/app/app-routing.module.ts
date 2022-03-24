@@ -47,6 +47,18 @@ const routes: Routes = [
     path: 'carrito',
     loadChildren: () => import('./carrito/carrito.module').then( m => m.CarritoPageModule)
   },
+  {
+    path: 'mainmenu-admin',
+    loadChildren: () => import('./mainmenu-admin/mainmenu-admin.module').then( m => m.MainmenuAdminPageModule)
+  },
+  {
+    path: 'modificar-detalles-pelicula',
+    loadChildren: () => import('./modificar-detalles-pelicula/modificar-detalles-pelicula.module').then( m => m.ModificarDetallesPeliculaPageModule)
+  },
+  {
+    path: 'agregar-pelicula',
+    loadChildren: () => import('./agregar-pelicula/agregar-pelicula.module').then( m => m.AgregarPeliculaPageModule)
+  },
 ];
 
 @NgModule({

@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-toolbar class="toolbarHeader">
+    <button class="botonRegresar" (click)="regresar()">
+      <ion-icon name="chevron-back-outline" id="flechaRegreso"></ion-icon>
+    </button>
+    <ion-title id="tituloPagina">Menú Principal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="fondo">
+
+    <ion-row class="botones-bar">
+
+      <button class="botones-row" (click)="alimentos()"> <ion-icon name="fast-food-outline" id="alimentos-img"></ion-icon> Alimentos</button>
+      <button class="botones-row" (click)="clientes()"> <ion-icon name="person-outline" id="cliente-img"></ion-icon> Clientes</button>
+      <button class="botones-row" (click)="agregarPelicula()"> <ion-icon name="add-circle-outline" id="cruz-img"></ion-icon> Agregar</button>
+    </ion-row>
+
+    <ion-card *ngFor="let item of peliculas; let i = index" class="cartas-peliculas">
+      <ion-item class="tarjeta-pelicula">
+        <img [src]="item.url" id="imagen-pelicula">
+      </ion-item>
+      <ion-item class="item-pelicula">
+        <button class="botones-pelicula" (click)="modificar(i)">
+          Modificar
+        </button>
+        <ion-button id="basurero-icon-button-comida" (click)="eliminarPelicula(i)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-card>
+
+
+  </div>
+
+</ion-content>

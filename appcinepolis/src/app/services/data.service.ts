@@ -30,6 +30,9 @@ export interface Pelicula {
   precio_adultomayor: string;
   precio_nino: string;
   precio_normal: string;
+  Hora: string;
+  Sala: string;
+  salaFlag: boolean;
   titulo: string;
   url: string;
 }
@@ -63,12 +66,21 @@ export interface Carrito {
   //usuario: any;
 }
 
+export interface Administrador {
+  id?: string;
+  correo: string;
+  contrasena: string;
+  nombre: string;
+  apellido1: string;
+  apellido2: string;
+}
 
 @Injectable({
   providedIn: 'root'
 })
 export class DataService {
 
+  adminLocal: any;
   usuarioLocal: any;
   peliculaLocal: any;
   comidasGeneral: any;
@@ -78,6 +90,19 @@ export class DataService {
   carritoLocal: any;
 
   constructor(private firestore: Firestore) { }
+
+  getAdmins(): Observable<Administrador[]>{
+    const adminsRef = collection(this.firestore, 'administradores');
+    return collectionData(adminsRef, { idField: 'id' }) as unknown as Observable<Administrador[]>;
+  }
+
+  setAdminLocal(admin: Administrador) {
+    this.adminLocal = admin;
+  }
+
+  getAdminLocal() {
+    return this.adminLocal;
+  }
 
   getUsuarios(): Observable<Usuario[]>{
     const usuariosRef = collection(this.firestore, 'usuarios');
@@ -90,7 +115,6 @@ export class DataService {
   }
 
   addUsuario(usuario: Usuario) {
-    console.log(usuario);
     const usuariosRef = collection(this.firestore, 'usuarios');
     return addDoc(usuariosRef, usuario);
   }
@@ -108,12 +132,65 @@ export class DataService {
     return collectionData(peliculasRef, { idField: 'id'}) as unknown as Observable<Pelicula[]>;
   }
 
+  addPelicula(pelicula: Pelicula) {
+    const peliculasRef = collection(this.firestore, 'peliculas');
+    return addDoc(peliculasRef, pelicula);
+  }
+
   setPeliculaLocal(pelicula: Pelicula) {
     this.peliculaLocal = pelicula;
   }
 
   getPeliculaLocal() {
     return this.peliculaLocal;
+  }
+
+  updatePelicula(pelicula: Pelicula){  
+    const peliculaDocRef = doc(this.firestore, `peliculas/${pelicula.id}`);
+    return updateDoc(peliculaDocRef, {
+      id: pelicula.id,
+      actores: pelicula.actores,
+      deleted: pelicula.deleted,
+      director: pelicula.director,
+      duracion: pelicula.duracion,
+      edad_min: pelicula.edad_min,
+      generos: pelicula.generos,
+      idiomas: pelicula.idiomas,
+      precio_adultomayor: pelicula.precio_adultomayor,
+      precio_nino: pelicula.precio_nino,
+      precio_normal: pelicula.precio_normal,
+      Sala: pelicula.Sala,
+      Hora: pelicula.Hora,
+      salaFlag: pelicula.salaFlag,
+      titulo: pelicula.titulo,
+      url: pelicula.url
+    });
+  }
+
+  updatePeliculaSinActores(pelicula: Pelicula){
+    const peliculaDocRef = doc(this.firestore, `peliculas/${pelicula.id}`);
+    return updateDoc(peliculaDocRef, {
+      id: pelicula.id,
+      deleted: pelicula.deleted,
+      director: pelicula.director,
+      duracion: pelicula.duracion,
+      edad_min: pelicula.edad_min,
+      generos: pelicula.generos,
+      idiomas: pelicula.idiomas,
+      precio_adultomayor: pelicula.precio_adultomayor,
+      precio_nino: pelicula.precio_nino,
+      precio_normal: pelicula.precio_normal,
+      Sala: pelicula.Sala,
+      Hora: pelicula.Hora,
+      salaFlag: pelicula.salaFlag,
+      titulo: pelicula.titulo,
+      url: pelicula.url
+    });
+  }
+
+  deletePelicula(pelicula: Pelicula){
+    const peliculaDocRef = doc(this.firestore, `peliculas/${pelicula.id}`);
+    return updateDoc(peliculaDocRef, {deleted: true});
   }
 
   getComidas(): Observable<Comida[]>{
@@ -174,6 +251,24 @@ export class DataService {
   getSala(nombre: any): Observable<Sala> {
     const salaRef = doc(this.firestore, `salas/${nombre}`);
     return docData(salaRef, { idField: 'id' }) as unknown as Observable<Sala>;  
+  }
+
+  updateSala(sala: Sala){
+    const salaDocRef = doc(this.firestore, `salas/${sala.id}`);
+    return updateDoc(salaDocRef, {
+      id: sala.id,
+          cantidad_asientos: sala.cantidad_asientos,
+          deleted: sala.deleted,
+          hora: sala.hora,
+          nombre: sala.nombre,
+          pelicula: sala.pelicula,
+          asientos: sala.asientos
+    });
+  }
+
+  quitarSalaPelicula(pelicula: Pelicula){
+    const peliculaDocRef = doc(this.firestore, `peliculas/${pelicula.id}`);
+    return updateDoc(peliculaDocRef, {Sala: pelicula.Sala, Hora: pelicula.Hora});
   }
 
   setSalaLocal(sala: Sala) {

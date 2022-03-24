@@ -66,7 +66,7 @@ export class RegisterPage implements OnInit {
       deleted: false
     });
 
-    //this.router.navigateByUrl('/home', { replaceUrl: true});
+    this.router.navigateByUrl('/home', { replaceUrl: true});
   }
 
 }

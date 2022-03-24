@@ -58,6 +58,7 @@ export class CompraEntradasPage implements OnInit {
 
   async entradasCarrito() {
 
+
     var i = 0;
     var j = 1;
 
@@ -168,6 +169,15 @@ export class CompraEntradasPage implements OnInit {
 
   async validarEntradas() {
 
+    const usuario = this.dataService.getUsuarioLocal();
+
+    if(usuario.vacunacion == 0){
+      return this.mensajeVacunas();
+    } 
+    else if(usuario.edad < this.pelicula.edad_min){
+      return this.mensajeEdad();
+    }
+
     var i = 0;
 
     for(let asiento of this.colorsArray){
@@ -178,24 +188,51 @@ export class CompraEntradasPage implements OnInit {
 
     const contadorAsientos = i;
 
-    if((contadorAsientos == (this.cantidadNinos + this.cantidadAdultos + this.cantidadAdultosMayores)) && contadorAsientos <= this.sala.cantidad_asientos){
-      /*AÑADIR AL CARRITO*/
-      this.entradasCarrito();
-    }
-    else {
-      let alert = await this.alertCtrl.create({
-        header: 'Advertencia datos inválidos',
-        message: 'Por favor revise que la cantidad de asientos seleccionados sea la misma que la cantidad total ingresada.',
-        buttons: [
-          {
-            text: 'Ok',
-            handler: () => {
-              console.log('Confirm Ok');
+    if(this.pelicula.edad_min < 18){
+
+      if((contadorAsientos == (this.cantidadNinos + this.cantidadAdultos + this.cantidadAdultosMayores)) && contadorAsientos <= this.sala.cantidad_asientos){
+        /*AÑADIR AL CARRITO*/
+        this.entradasCarrito();
+      }
+      else {
+        let alert = await this.alertCtrl.create({
+          header: 'Advertencia datos inválidos',
+          message: 'Por favor revise que la cantidad de asientos seleccionados sea la misma que la cantidad total ingresada.',
+          buttons: [
+            {
+              text: 'Ok',
+              handler: () => {
+                console.log('Confirm Ok');
+              }
             }
-          }
-        ]
-      })
-      await alert.present();
+          ]
+        })
+        await alert.present();
+      }
+      
+    } 
+    else if(this.pelicula.edad_min >= 18){
+
+      if((contadorAsientos == (this.cantidadAdultos + this.cantidadAdultosMayores)) && contadorAsientos <= this.sala.cantidad_asientos){
+        /*AÑADIR AL CARRITO*/
+        this.entradasCarrito();
+      }
+      else {
+        let alert = await this.alertCtrl.create({
+          header: 'Advertencia datos inválidos',
+          message: 'Por favor revise que la cantidad de asientos seleccionados sea la misma que la cantidad total ingresada.',
+          buttons: [
+            {
+              text: 'Ok',
+              handler: () => {
+                console.log('Confirm Ok');
+              }
+            }
+          ]
+        })
+        await alert.present();
+      }
+
     }
 
   }
@@ -235,6 +272,39 @@ export class CompraEntradasPage implements OnInit {
 
   regresar() {
     this.router.navigateByUrl('/detalles-pelicula', { replaceUrl: true});
+  }
+
+
+  async mensajeVacunas(){
+    let alert = await this.alertCtrl.create({
+      header: 'Advertencia usuario sin vacunas',
+      message: 'Debido a que el usuario no tiene vacunas registradas, no podemos venderle entradas a esta película. Disculpe las molestias.',
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            console.log('Confirm Ok');
+          }
+        }
+      ]
+    })
+    await alert.present();
+  }
+
+  async mensajeEdad(){
+    let alert = await this.alertCtrl.create({
+      header: 'Advertencia Edad',
+      message: 'Debido a que el usuario no tiene la edad requerida para ver esta película, no le podemos vender entradas a esta función. Disculpe las molestias.',
+      buttons: [
+        {
+          text: 'Ok',
+          handler: () => {
+            console.log('Confirm Ok');
+          }
+        }
+      ]
+    })
+    await alert.present();
   }
 
 }

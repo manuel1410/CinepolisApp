@@ -23,7 +23,7 @@
           <h3>Edad mínima: <span class="texto">{{pelicula.edad_min}} años</span></h3>
           <div *ngIf="sala">
             <h3>Cantidad de asientos disponibles: <span class="texto">{{sala.cantidad_asientos}}</span></h3>
-            <h3>Cantidad niños: <input id="input-cantidad-ninos" type="number" class="input-field" [(ngModel)]="cantidadNinos" name="input-cantidad-ninos" placeholder="" min="0" max={{sala.cantidad_asientos}}> </h3>
+            <h3 *ngIf="pelicula.edad_min < 18">Cantidad niños: <input id="input-cantidad-ninos" type="number" class="input-field" [(ngModel)]="cantidadNinos" name="input-cantidad-ninos" placeholder="" min="0" max={{sala.cantidad_asientos}}> </h3>
             <h3>Cantidad Adultos: <input id="input-cantidad-adultos" type="number" class="input-field" [(ngModel)]="cantidadAdultos" name="input-cantidad-adultos" placeholder="" min="0" max={{sala.cantidad_asientos}}> </h3>
             <h3>Cantidad Adultos Mayores: <input id="input-cantidad-adultos-mayores" type="number" class="input-field" [(ngModel)]="cantidadAdultosMayores" name="input-cantidad-adultos-mayores" placeholder="" min="0" max={{sala.cantidad_asientos}}> </h3>
             

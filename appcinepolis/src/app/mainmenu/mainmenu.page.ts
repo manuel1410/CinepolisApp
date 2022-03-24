@@ -10,16 +10,27 @@ import { DataService } from '../services/data.service';
 })
 export class MainmenuPage implements OnInit {
 
-  peliculas: any;
+  allPeliculas: any;
+  peliculas: Array<any>;
   pelicula: any;
 
 
   constructor(private dataService: DataService, public navCtrl: NavController, public alertCtrl: AlertController, private router: Router) {
     this.dataService.setCarritoLocalUsuario();
     const peliculasRef = this.dataService.getPeliculas();
+    this.peliculas = [];
     peliculasRef.subscribe(res => {
-      this.peliculas = res;
+      this.allPeliculas = res;
+      //console.log(this.allPeliculas);
+      for(let pelicula of this.allPeliculas){
+        //console.log(pelicula);
+        if(pelicula.salaFlag == true && pelicula.deleted == false){
+          this.peliculas.push(pelicula);
+        }
+      }
     })
+
+
   }
 
   ngOnInit() {
