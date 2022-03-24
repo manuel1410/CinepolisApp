@@ -1,0 +1,217 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+* {
+    font-family: 'Roboto', sans-serif;
+    font-size: 24px;
+}
+
+/*HEADER*/
+.botonRegresar {
+    visibility: hidden;
+}
+
+#flechaRegreso {
+    position: fixed;
+    font-size: 30px;
+    top: 10px;
+    left: 20px;
+    color: white;
+    visibility: visible;
+}
+
+.toolbarHeader {
+    text-align: center;
+    --background: #18599c;
+    color: white;
+}
+
+#tituloPagina {
+    position: fixed;
+    top: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#icono-carrito {
+    position: fixed;
+    left: 90px;
+}
+
+
+/*CONTENT*/
+
+.fondo {
+    width: 100%;
+    height: 100%;
+    background-color: #18599c;
+    --offset-bottom: auto!important;
+    --overflow: hidden;
+    overflow: auto;
+    &::-webkit-scrollbar {
+    display: none;
+    }
+}
+
+.cartas-peliculas {
+    background-color: #0e3155;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 350px;
+    display:inline-flex;
+    margin-top: 15px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+.cartas-peliculas item-inner {
+    padding: 0px;
+}
+
+#imagen-pelicula {
+    height: 150px;
+    position: relative;
+    left: 0px;
+    margin: 0px;
+    padding: 0px;
+    background-color: #0e3155;
+}
+
+.texto-tarjeta {
+    color: white;
+    font-size: 16px;
+}
+
+.texto-tarjeta h4 {
+    color: #FFCD34;
+    font-size: 20px;
+}
+
+.texto-tarjeta .texto-descripcion{
+    color: white;
+    font-size: 16px;
+}
+
+.tarjeta{
+    display: flexbox;
+    position: relative;
+    width: 300px;
+    height: 140px;
+    margin: 5px;
+}
+
+.texto-inferior {
+    position: relative;
+    top: -160px;
+}
+
+.detalles h4 {
+    margin-top: 8px;
+}
+
+#basurero-icon-button {
+    position: relative;
+    left: 10px;
+    top: 7px;
+    --background: #df00006b;
+    --ripple-color: #df0000;
+}
+
+#basurero-icon-button:hover{
+    --background: #df0000;
+}
+
+.botones-row {
+    position: relative;
+    top: 4px;
+    margin: 5px;
+    background-color: #FFCD34;
+    border-radius: 15px;
+    width: 150px;
+    height: 50px;
+    padding: 2px;
+}
+
+#check-img {
+    position: relative;
+    top: 4px;
+}
+
+#basurero-img {
+    position: relative;
+    top: 4px;
+}
+
+/*CARTAS COMIDAS*/
+
+.cartas-comidas {
+    background-color: #0e3155;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 300px;
+    height: 220px;
+    display:inline-flex;
+    margin-top: 15px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 0px;
+    padding: 0px;
+}
+
+.cartas-comidas h4 {
+    color: #FFCD34;
+    font-size: 20px;
+}
+
+#imagen-comida {
+    width: 102px;
+    height: 150px;
+    position: relative;
+    left: 0px;
+    margin: 0px;
+    padding: 0px;
+    background-color: #0e3155;
+}
+.cartas-comidas .texto-superior {
+    position: relative;
+    left: 110px;
+    top: -160px;
+    margin-top: 3px;
+}
+
+.texto-descripcion{
+    color: white;
+    font-size: 16px;
+}
+
+
+/*SIN ITEMS*/
+
+.sin-items {
+    text-align: center;
+    color: white;
+    position: absolute;
+    top: 200px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+#oculto {
+    display: none;
+}
+
+.botones-pelicula {
+    background-color: #FFCD34;
+    width: 180px;
+    height: 40px;
+    //text-align: left;
+    position: relative;
+    top: 15px;
+    //border: 4px solid #FFCD34;
+    // left: 50%;
+    // transform: translateX(-50%);
+}

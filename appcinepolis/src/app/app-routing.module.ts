@@ -71,6 +71,18 @@ const routes: Routes = [
     path: 'agregar-alimento',
     loadChildren: () => import('./agregar-alimento/agregar-alimento.module').then( m => m.AgregarAlimentoPageModule)
   },
+  {
+    path: 'clientes-menu-admin',
+    loadChildren: () => import('./clientes-menu-admin/clientes-menu-admin.module').then( m => m.ClientesMenuAdminPageModule)
+  },
+  {
+    path: 'modificar-cliente',
+    loadChildren: () => import('./modificar-cliente/modificar-cliente.module').then( m => m.ModificarClientePageModule)
+  },
+  {
+    path: 'agregar-cliente',
+    loadChildren: () => import('./agregar-cliente/agregar-cliente.module').then( m => m.AgregarClientePageModule)
+  },
 ];
 
 @NgModule({

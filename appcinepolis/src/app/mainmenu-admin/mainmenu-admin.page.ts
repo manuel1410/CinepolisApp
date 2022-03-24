@@ -51,7 +51,7 @@ export class MainmenuAdminPage implements OnInit {
   }
 
   clientes(){
-
+    this.router.navigateByUrl('/clientes-menu-admin', { replaceUrl: true});
   }
 
   alimentos(){

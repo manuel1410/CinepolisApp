@@ -119,6 +119,26 @@ export class DataService {
     return addDoc(usuariosRef, usuario);
   }
 
+  deleteCliente(usuario: Usuario){
+    const usuariosRef = doc(this.firestore, `usuarios/${usuario.id}`);
+    return updateDoc(usuariosRef, {deleted: true});
+  }
+  
+  updateUsuario(usuario: Usuario){
+    const usuariosRef = doc(this.firestore, `usuarios/${usuario.id}`);
+    return updateDoc(usuariosRef, {
+      correo: usuario.correo,
+      contrasena: usuario.contrasena,
+      numeroCedula: usuario.numeroCedula,
+      nombre: usuario.nombre,
+      apellido1: usuario.apellido1,
+      apellido2: usuario.apellido2,
+      fechaNacimiento: usuario.fechaNacimiento,
+      edad: usuario.edad,
+      vacunacion: usuario.vacunacion,
+      deleted: usuario.deleted});
+  }
+
   setUsuarioLocal(usuario: Usuario) {
     this.usuarioLocal = usuario;
   }
