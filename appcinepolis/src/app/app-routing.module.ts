@@ -59,6 +59,18 @@ const routes: Routes = [
     path: 'agregar-pelicula',
     loadChildren: () => import('./agregar-pelicula/agregar-pelicula.module').then( m => m.AgregarPeliculaPageModule)
   },
+  {
+    path: 'alimentos-menu-admin',
+    loadChildren: () => import('./alimentos-menu-admin/alimentos-menu-admin.module').then( m => m.AlimentosMenuAdminPageModule)
+  },
+  {
+    path: 'modificar-alimento',
+    loadChildren: () => import('./modificar-alimento/modificar-alimento.module').then( m => m.ModificarAlimentoPageModule)
+  },
+  {
+    path: 'agregar-alimento',
+    loadChildren: () => import('./agregar-alimento/agregar-alimento.module').then( m => m.AgregarAlimentoPageModule)
+  },
 ];
 
 @NgModule({

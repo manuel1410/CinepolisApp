@@ -1,0 +1,71 @@
+<ion-header>
+  <ion-toolbar class="toolbarHeader">
+    <button class="botonRegresar" (click)="regresar()">
+      <ion-icon name="chevron-back-outline" id="flechaRegreso"></ion-icon>
+    </button>
+    <ion-title id="tituloPagina">Menú Principal</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+
+  <div class="fondo">
+
+    <div class="menu-sin-filtro" *ngIf="!filtro_menu">
+
+    <ion-row class="botones-bar">
+
+      <button class="botones-row" (click)="filtrar()"> <ion-icon name="filter-outline"></ion-icon> Filtros</button>
+      <button class="botones-row" (click)="agregarComida()"> <ion-icon name="add-circle-outline" id="cruz-img"></ion-icon> Agregar</button>
+    </ion-row>
+
+    <ion-card *ngFor="let item of comidas; let i = index" class="cartas-peliculas">
+      <ion-item class="tarjeta-pelicula">
+        <img [src]="item.url" id="imagen-pelicula">
+      </ion-item>
+      <ion-item class="item-pelicula">
+        <button class="botones-pelicula" (click)="modificar(i)">
+          Modificar
+        </button>
+        <ion-button id="basurero-icon-button-comida" (click)="eliminarComida(i)">
+          <ion-icon name="trash-outline"></ion-icon>
+        </ion-button>
+      </ion-item>
+    </ion-card>
+
+  </div>
+
+    <div class="menu-filtro" *ngIf="filtro_menu">
+
+      <ion-row class="botones-bar">
+        <button class="botones-row" (click)="devolverseFiltros()"> <ion-icon name="filter-outline"></ion-icon> Filtros</button>
+        <button class="botones-row" (click)="devolverseFiltros()" id="boton-invisible"> <ion-icon name="filter-outline"></ion-icon> Filtros</button>
+      </ion-row>
+  
+      <div class="switches-filtraje">
+        <ion-list>
+          <ion-item>
+            <ion-label>Comidas</ion-label>
+            <ion-toggle [(ngModel)]="comidasSwitch" class="switches-filtros"></ion-toggle>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label>Bebidas</ion-label>
+            <ion-toggle [(ngModel)]="bebidasSwitch" class="switches-filtros"></ion-toggle>
+          </ion-item>
+  
+          <ion-item>
+            <ion-label>Combos</ion-label>
+            <ion-toggle [(ngModel)]="combosSwitch" class="switches-filtros"></ion-toggle>
+          </ion-item>
+        </ion-list>
+      </div>
+    </div>
+
+
+    
+
+
+  </div>
+
+</ion-content>

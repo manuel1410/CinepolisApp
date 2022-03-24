@@ -55,7 +55,7 @@ export class MainmenuAdminPage implements OnInit {
   }
 
   alimentos(){
-
+    this.router.navigateByUrl('/alimentos-menu-admin', { replaceUrl: true});
   }
 
   eliminarPelicula(index){

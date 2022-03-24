@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-toolbar class="toolbarHeader">
+    <button class="botonRegresar" (click)="regresar()">
+      <ion-icon name="chevron-back-outline" id="flechaRegreso"></ion-icon>
+    </button>
+    <ion-title id="tituloPagina">Agregar</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <div class="fondo">
+
+    <ion-card class="tarjeta-pelicula">
+      <div class="seccion-info">
+        <div class="info-pelicula">
+          <!-- /*SECCION INPUTS*/ -->
+          <form action="submit" class="form-register">
+            <h3>Artículo: <span class="texto-input"><input id="input-articulo" type="text" class="input-field" [(ngModel)]="inputArticulo" name="input-articulo" placeholder="Nombre"></span> </h3>
+            <h3>Tipo: <span class="texto-input"><input id="input-tipo" type="text" class="input-field" [(ngModel)]="inputTipo" name="input-tipo" placeholder="Tipo"></span></h3>
+            <h3>Precio: <span class="texto-input"><input id="input-precio" type="number" class="input-field" [(ngModel)]="inputPrecio" name="input-precio" placeholder="Precio" min="0"></span></h3>
+            <h3>Cantidad disponible: <span class="texto-input"> <input id="input-cantidad" type="number" class="input-field" [(ngModel)]="inputCantidad" name="input-cantidad" placeholder="Cantidad disponible" min="0"></span></h3>
+            <h3>Imagen url: <span class="texto-input"><input id="input-url" type="text" class="input-field" [(ngModel)]="inputImagen" name="input-url" placeholder="url"></span></h3>
+          </form>
+
+        </div>
+        <div class="botones-compra">
+          <button class="boton-compra" (click)="agregar()">
+            <p>Agregar</p>
+          </button>
+        </div>
+    </div>
+    </ion-card>
+
+  </div>
+
+</ion-content>

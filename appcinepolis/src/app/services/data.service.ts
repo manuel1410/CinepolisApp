@@ -198,6 +198,11 @@ export class DataService {
     return collectionData(comidasRef, { idField: 'id'}) as unknown as Observable<Comida[]>;
   }
 
+  addComida(comida: Comida) {
+    const comidasRef = collection(this.firestore, 'comidas');
+    return addDoc(comidasRef, comida);
+  }
+
   setComidaGeneral(comidas: any) {
     this.comidasGeneral = comidas;
   }
@@ -241,6 +246,25 @@ export class DataService {
 
   getComidaFiltrada() {
     return this.comidaFiltrada;
+  }
+
+  deleteComida(comida: Comida){
+    const comidaDocRef = doc(this.firestore, `comidas/${comida.id}`);
+    return updateDoc(comidaDocRef, {deleted: true});
+  }
+
+
+  updateComida(comida: Comida){  
+    const comidaDocRef = doc(this.firestore, `comidas/${comida.id}`);
+    return updateDoc(comidaDocRef, {
+      id: comida.id,
+      cantidad: comida.cantidad,
+      deleted: comida.deleted,
+      nombre: comida.nombre,
+      precio: comida.precio,
+      tipo: comida.tipo,
+      url: comida.url
+    });
   }
 
   getSalas(): Observable<Sala[]>{

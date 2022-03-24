@@ -59,7 +59,7 @@
     padding: 2px;
 }
 
-#carrito-img {
+#cruz-img {
     position: relative;
     top: 4px;
 }
@@ -67,6 +67,11 @@
 #alimento-img {
     position: relative;
     top: 4px;
+}
+
+#cliente-img {
+    position: relative;
+    top: 4px;  
 }
 
 .cartas-peliculas {
@@ -102,10 +107,10 @@
 
 .botones-pelicula {
     background-color: #FFCD34;
-    text-align: center;
+    //text-align: left;
     position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    // left: 50%;
+    // transform: translateX(-50%);
 }
 
 
@@ -113,3 +118,58 @@
 //     width: 100px;
 //     height: 100px;
 // }
+
+#boton-invisible {
+    display: none;
+}
+
+#basurero-icon-button-comida {
+
+    --background: #df000077;
+    --ripple-color: #df0000;
+}
+
+#basurero-icon-button-comida:hover{
+    --background: #df0000;
+}
+
+/*filtros*/
+
+#boton-invisible {
+    display: none;
+}
+
+.switches-filtraje {
+    margin: 10px;
+    padding: 0px;
+}
+
+
+.switches-filtraje ion-label {
+    color: white;
+}
+
+
+.switches-filtraje ion-list {
+    margin: 0px;
+    padding: 0px;
+}
+
+.switches-filtraje ion-item{
+    margin: 0px;
+    --background: #18599c;
+}
+
+.switches-filtros{
+    width: 40px;
+    height: 20px;
+
+    --background: grey ;
+    --background-checked: #0e3155;
+
+    color: white;
+}
+
+#carritoAlimentos {
+    display: none;
+}

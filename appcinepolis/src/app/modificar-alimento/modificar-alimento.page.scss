@@ -5,6 +5,11 @@
     font-size: 24px;
 }
 
+.texto {
+    font-size: 20px;
+    color: white;
+}
+
 /*HEADER*/
 .botonRegresar {
     visibility: hidden;
@@ -47,69 +52,50 @@
     }
 }
 
-
-.botones-row {
-    position: relative;
-    top: 4px;
-    margin: 5px;
-    background-color: #FFCD34;
-    border-radius: 15px;
-    width: 150px;
-    height: 50px;
-    padding: 2px;
-}
-
-#carrito-img {
-    position: relative;
-    top: 4px;
-}
-
-#alimento-img {
-    position: relative;
-    top: 4px;
-}
-
-.cartas-peliculas {
-    position: relative;
-    left: 50%;
-    transform: translateX(-54%);
-    width: 200px;
-    height: 250px;
-    display: inline-block;
-}
-
 .tarjeta-pelicula {
+    height: 95%;
     --background: #0e3155;
-    border-radius: 0px;
-    border: 0px solid black;
+    --offset-bottom: auto!important;
+    --overflow: hidden;
+    overflow: auto;
+    &::-webkit-scrollbar {
+    display: none;
+    }
+}
+
+.imagen-pelicula {
+    --background: #0e3155;
 }
 
 #imagen-pelicula {
     position: relative;
-    top: 20px;
     left: 50%;
-    height: 203px;
     transform: translateX(-50%);
 }
 
-#titulo-pelicula {
-    position: relative;
+h3 {
+    color: #FFCD34;
 }
 
-.item-pelicula {
-    --background: #FFCD34;
-}
-
-.botones-pelicula {
+.boton-compra {
+    top: 10px;
+    margin: auto;
     background-color: #FFCD34;
-    text-align: center;
+    border-radius: 15px;
+    width: 200px;
+    height: 50px;
     position: relative;
     left: 50%;
     transform: translateX(-50%);
+    padding: 2px;
 }
 
+.boton-compra p {
+    position: relative;
+    top: -10px;
+    text-align: center;
+}
 
-// #abc {
-//     width: 100px;
-//     height: 100px;
-// }
+.texto-input {
+    color: black;
+}
