@@ -40,7 +40,7 @@ export class HomePage {
   async login_aux(usuarios){
     await usuarios.subscribe(res => {
       for(let item in res){
-        if(res[item].correo == this.inputEmail && res[item].contrasena == this.inputPassword){
+        if(res[item].correo == this.inputEmail && res[item].contrasena == this.inputPassword && res[item].deleted == false){
           this.usuario = res[item];
           return this.usuario;
         }

@@ -312,7 +312,7 @@ export class DataService {
 
   quitarSalaPelicula(pelicula: Pelicula){
     const peliculaDocRef = doc(this.firestore, `peliculas/${pelicula.id}`);
-    return updateDoc(peliculaDocRef, {Sala: pelicula.Sala, Hora: pelicula.Hora});
+    return updateDoc(peliculaDocRef, {Sala: pelicula.Sala, Hora: pelicula.Hora, salaFlag: pelicula.salaFlag});
   }
 
   setSalaLocal(sala: Sala) {
